@@ -2034,6 +2034,40 @@ Data Consistency: With a microservices architecture, maintaining data consistenc
 In summary, the microservices architecture provides many benefits in terms of scalability, agility, resilience, and flexibility, but it also introduces complexity, network latency, operational overhead, security, and data consistency challenges that must be carefully managed.
 
 --------------------------------------------------------------------------------------------------------------------------
+
+</br>
+
+### 𝐖𝐡𝐚𝐭 𝐢𝐬 𝐭𝐡𝐞 𝐝𝐢𝐟𝐟𝐞𝐫𝐞𝐧𝐜𝐞 𝐛𝐞𝐭𝐰𝐞𝐞𝐧 𝐜𝐨𝐧𝐬𝐭 𝐚𝐧𝐝 𝐫𝐞𝐚𝐝𝐨𝐧𝐥𝐲 𝐢𝐧 𝐂#?
+
+⚡ If you are confident that 𝐭𝐡𝐞 𝐯𝐚𝐥𝐮𝐞 𝐨𝐟 𝐭𝐡𝐞 𝐜𝐨𝐧𝐬𝐭𝐚𝐧𝐭 𝐰𝐨𝐧'𝐭 𝐜𝐡𝐚𝐧𝐠𝐞, use a 𝐜𝐨𝐧𝐬𝐭.
+⚡ But if you have a constant that 𝐦𝐚𝐲 𝐜𝐡𝐚𝐧𝐠𝐞 𝐨𝐫 𝐰𝐡𝐞𝐧 𝐢𝐧 𝐝𝐨𝐮𝐛𝐭, use a 𝐫𝐞𝐚𝐝𝐨𝐧𝐥𝐲.
+
+🔶𝐂𝐨𝐧𝐬𝐭𝐚𝐧𝐭𝐬
+◾ Constants are static by default.
+◾ They must have a value at compilation-time.
+◾ Could be declared within functions.
+◾ Are copied into every assembly that uses them (every assembly gets a local copy of values).
+◾ Can be used in attributes.
+
+🔶𝐑𝐞𝐚𝐝𝐨𝐧𝐥𝐲 𝐈𝐧𝐬𝐭𝐚𝐧𝐜𝐞 𝐅𝐢𝐞𝐥𝐝𝐬
+◾ Must have set value, by the time constructor exits.
+◾ Are evaluated when instance is created.
+
+🔶𝐒𝐭𝐚𝐭𝐢𝐜 𝐑𝐞𝐚𝐝𝐨𝐧𝐥𝐲 𝐅𝐢𝐞𝐥𝐝𝐬
+◾ Are evaluated when code execution hits class reference (when new instance is created or a static method is executed).
+◾ Must have an evaluated value by the time the static constructor is done.
+
+🔥 Let's look at the details in the example. Consider we have Assembly-A and Assembly-B and a class defined in Assembly-A.
+Assembly-B references Assembly-A and uses these values in code. 
+
+✅𝐖𝐡𝐞𝐧 𝐓𝐡𝐢𝐬 𝐈𝐬 𝐂𝐨𝐦𝐩𝐢𝐥𝐞𝐝:
+🔹 In the case of the 𝐜𝐨𝐧𝐬𝐭 𝐯𝐚𝐥𝐮𝐞, 𝐢𝐭 𝐢𝐬 𝐥𝐢𝐤𝐞 𝐚 𝐟𝐢𝐧𝐝-𝐫𝐞𝐩𝐥𝐚𝐜𝐞. The value "Serkut" is 'baked into' the Assembly-B's IL. 𝐓𝐡𝐢𝐬 𝐦𝐞𝐚𝐧𝐬 that if tomorrow I update MyName (My Const value) to "Serkan", Assembly-B would still have "Serkut" (old value) till I recompile it.
+
+🔹 In the case of the 𝐫𝐞𝐚𝐝𝐨𝐧𝐥𝐲 𝐯𝐚𝐥𝐮𝐞, 𝐢𝐭 𝐢𝐬 𝐥𝐢𝐤𝐞 𝐚 𝐫𝐞𝐟 𝐭𝐨 𝐚 𝐦𝐞𝐦𝐨𝐫𝐲 𝐥𝐨𝐜𝐚𝐭𝐢𝐨𝐧. The value is not baked into Assembly-B's IL. 𝐓𝐡𝐢𝐬 𝐦𝐞𝐚𝐧𝐬 that if the memory location is updated, Assembly-B gets the new value without recompilation. So if MyAge (My redonly value) is updated to 50, you only need to build Assembly-A and all clients do not need to be recompiled.
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
 </br>
 
 ## **Front end**
