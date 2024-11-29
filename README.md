@@ -2066,7 +2066,37 @@ Assembly-B references Assembly-A and uses these values in code.
 
 🔹 In the case of the 𝐫𝐞𝐚𝐝𝐨𝐧𝐥𝐲 𝐯𝐚𝐥𝐮𝐞, 𝐢𝐭 𝐢𝐬 𝐥𝐢𝐤𝐞 𝐚 𝐫𝐞𝐟 𝐭𝐨 𝐚 𝐦𝐞𝐦𝐨𝐫𝐲 𝐥𝐨𝐜𝐚𝐭𝐢𝐨𝐧. The value is not baked into Assembly-B's IL. 𝐓𝐡𝐢𝐬 𝐦𝐞𝐚𝐧𝐬 that if the memory location is updated, Assembly-B gets the new value without recompilation. So if MyAge (My redonly value) is updated to 50, you only need to build Assembly-A and all clients do not need to be recompiled.
 
+--------------------------------------------------------------------------------------------------------------------------
 
+</br>
+
+## JWT Explained
+
+1. JSON Format: JWTs are represented as JSON objects, making them easy to read by both humans and machines. They consist of three parts separated by dots (`.`): the Header, the Payload, and the Signature.
+
+ - Header: The Header typically consists of two parts: the type of the token (JWT) and the signing algorithm being used (e.g., HMAC SHA256 or RSA). It's Base64Url encoded to form the first part of the JWT.
+
+ - Payload: The Payload contains the claims, which are statements about an entity (usually, the user) and additional data. Claims can be categorized into three types:
+ 
+ - Registered Claims: These are predefined claims with specific meanings, such as "iss" (issuer), "sub" (subject), "aud" (audience), "exp" (expiration time), and "iat" (issued at time).
+ 
+ - Public Claims: These are user-defined claims that can be freely used, but it's a good practice to avoid common names to prevent conflicts.
+ 
+ - Private Claims: These are custom claims used between parties that agree on their meaning.
+
+ - Signature: The Signature is used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn't tampered with during transmission. The Signature is created by taking the encoded Header, encoded Payload, a secret (or private key in the case of RSA), and the chosen algorithm, then running them through the algorithm to produce a hash. This hash is used to verify the integrity of the token.
+
+2. Encoding: Each of the three JWT components (Header, Payload, and Signature) is Base64Url encoded, which is a URL-safe variant of Base64 encoding. This encoding ensures that the JWT remains compact and can be safely transmitted in URLs, query parameters, or HTTP headers.
+
+3. Usage: JWTs are often used in authentication and authorization workflows. Here's how it typically works:
+
+ - Authentication: When a user logs in or authenticates, the server generates a JWT and signs it with a secret key. This JWT is then sent back to the client, which can store it locally (e.g., in a cookie or local storage) and include it in subsequent requests to prove its identity.
+
+ - Authorization: The server, when receiving a request with a JWT, can verify the token's signature using the secret key. If the signature is valid, the server can trust the claims within the token to make authorization decisions, such as determining if the user has the right permissions to access a resource.
+
+4. Statelessness: The server doesn't need to store session data because all the necessary information is contained within the token itself. This can simplify the design of distributed systems.
+
+5. Expiration: JWTs can have an expiration time (specified in the "exp" claim), which means they are only valid for a certain period.
 --------------------------------------------------------------------------------------------------------------------------
 
 </br>
