@@ -2040,6 +2040,7 @@ In summary, the microservices architecture provides many benefits in terms of sc
 ### 𝐖𝐡𝐚𝐭 𝐢𝐬 𝐭𝐡𝐞 𝐝𝐢𝐟𝐟𝐞𝐫𝐞𝐧𝐜𝐞 𝐛𝐞𝐭𝐰𝐞𝐞𝐧 𝐜𝐨𝐧𝐬𝐭 𝐚𝐧𝐝 𝐫𝐞𝐚𝐝𝐨𝐧𝐥𝐲 𝐢𝐧 𝐂#?
 
 ⚡ If you are confident that 𝐭𝐡𝐞 𝐯𝐚𝐥𝐮𝐞 𝐨𝐟 𝐭𝐡𝐞 𝐜𝐨𝐧𝐬𝐭𝐚𝐧𝐭 𝐰𝐨𝐧'𝐭 𝐜𝐡𝐚𝐧𝐠𝐞, use a 𝐜𝐨𝐧𝐬𝐭.
+
 ⚡ But if you have a constant that 𝐦𝐚𝐲 𝐜𝐡𝐚𝐧𝐠𝐞 𝐨𝐫 𝐰𝐡𝐞𝐧 𝐢𝐧 𝐝𝐨𝐮𝐛𝐭, use a 𝐫𝐞𝐚𝐝𝐨𝐧𝐥𝐲.
 
 🔶𝐂𝐨𝐧𝐬𝐭𝐚𝐧𝐭𝐬
