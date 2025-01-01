@@ -1347,41 +1347,48 @@ Normalization is important because it helps ensure that data is consistent and a
 
 ### What is the different between primary key and unique key in SQL database 
 
-Primary Key vs. Unique Key
+#### Primary Key vs. Unique Key
 
 Definition:
 
-A primary key uniquely identifies each record in a table.	
+A primary key uniquely identifies each record in a table.
+	
 A unique key ensures that all values in a column are unique, preventing duplicate entries.
 
 NULL Values:
 
 Cannot contain NULL values.	
+
 Can contain NULL values, but only one NULL is allowed per column.
 
 Uniqueness:	
 
 Enforces entity integrity by ensuring that each row is unique.	
+
 Enforces uniqueness of data but does not enforce entity integrity.
 
 Index Type:	
 
 Typically creates a clustered index by default.	
+
 Typically creates a non-clustered index by default.
 
 Number of Keys:	
 
-Each table can have only one primary key.	
+Each table can have only one primary key.
+	
 A table can have multiple unique keys.
 
 Modification:
 	
-Values in primary key columns cannot be modified or deleted easily.	
+Values in primary key columns cannot be modified or deleted easily.
+	
 Values in unique key columns can be modified or deleted.
 
 Usage:	
 
 Used to uniquely identify records and establish relationships between tables (as foreign keys).	
+
 Used to ensure no duplicate values exist in a column, except for one NULL value.
 
 
